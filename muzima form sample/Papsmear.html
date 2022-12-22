@@ -1,0 +1,519 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+
+    <title>Papsmear Form v 0.01</title>
+</head>
+
+<body class="col-md-10 col-md-offset-1">
+<div id="pre_populate_data"></div>
+<form class="relevant-female" id="papsmear_form" name="papsmear_form">
+<h2 class="text-center">Papsmear Form v 0.01</h2>
+
+<div class="section">
+    <h3>Demographics</h3>
+
+    <div class="form-group">
+        <input class="form-control" id="patient.uuid" name="patient.uuid" type="hidden" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.medical_record_number">AMRS ID Number:</label>
+        <input class="form-control" id="patient.medical_record_number" name="patient.medical_record_number"
+               type="text" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.family_name">Family Name:</label>
+        <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.given_name">Given Name:</label>
+        <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.middle_name">Middle Name:</label>
+        <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.sex">Gender:</label>
+        <select class="form-control" id="patient.sex" name="patient.sex" disabled="disabled">
+            <option value="">...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="patient.birth_date">Date Of Birth:</label>
+        <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
+               readonly="readonly" disabled="disabled">
+    </div>
+</div>
+<div class="section">
+    <h3>Encounter Details</h3>
+
+    <div class="form-group">
+        <label for="encounter.location_id">Name of Dispensary:<span class="required">*</span></label>
+        <input class="form-control valid-location-only" id="encounter.location_id" type="text" placeholder="Start typing something..." required="required">
+        <input class="form-control" name="encounter.location_id" type="hidden">
+    </div>
+
+    <div class="form-group hidden">
+        <label for="encounter.location_id_select">Screening Site:<span class="required">*</span></label>
+        <select class="form-control"  id="encounter.location_id_select" required="required">
+            <option>...</option>
+            <option value="84" data-location="AMPATH-MTRH">AMPATH-MTRH</option>
+            <option value="19" data-location="Busia">Busia</option>
+            <option value="7" data-location="Chulaimbo">Chulaimbo</option>
+            <option value="17" data-location="Iten">Iten</option>
+            <option value="11" data-location="Kitale">Kitale</option>
+            <option value="2" data-location="Mosoriot Health Centre">Mosoriot Health Centre</option>
+            <option value="20" data-location="Port Victoria">Port Victoria</option>
+            <option value="12" data-location="Teso District Hospital">Teso District Hospital</option>
+            <option value="3" data-location="Turbo Health Centre">Turbo Health Centre</option>
+            <option value="8" data-location="Webuye">Webuye</option>
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="encounter.encounter_datetime">Encounter Date:<span class="required">*</span></label>
+        <input class="form-control datepicker nonFutureDate past-date" id="encounter.encounter_datetime"
+               name="encounter.encounter_datetime" type="text" readonly="readonly"
+               required="required">
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid" type="hidden"
+               required="required">
+    </div>
+</div>
+<div class="section">
+    <h3>Observation Details </h3>
+
+    <div class="form-group">
+        <label for="obs.last_menstrual_period_date">First day of your last menstrual period (LMP)
+            <span class="required">*</span>
+        </label>
+        <input class="form-control datepicker nonFutureDate past-date" id="obs.last_menstrual_period_date"
+               name="last_menstrual_period_date" type="text" data-concept="1836^LAST MENSTRUAL PERIOD DATE^99DCT"
+               required="required" readonly="readonly">
+    </div>
+    <div class="section">
+        <h4>Select all symptoms that best describe complaints</h4>
+        <fieldset name="5219^CHIEF COMPLAINT^99DCT">
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.pain" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="6613^PAIN^99DCT">
+                    Pain
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.asymptomatic" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="5006^ASYMPTOMATIC^99DCT">
+                    Asymptomatic
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.having_hypoglycemia_symptoms_in_past_month" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT"
+                           value="8008^HAVING HYPOGLYCEMIA SYMPTOMS IN PAST MONTH^99DCT">
+                    Hypoglycemia symptoms in past month
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.vaginal_discharge" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="5993^VAGINAL DISCHARGE^99DCT">
+                    Vaginal discharge
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.vaginal_bleeding" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="1489^VAGINAL BLEEDING^99DCT">
+                    Vaginal bleeding
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.dysfunctional_uterine_bleeding" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="6497^DYSFUNCTIONAL UTERINE BLEEDING^99DCT">
+                    Dysfunctional uterine bleeding
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.menorrhagia" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="1461^MENORRHAGIA^99DCT">
+                    Menorrhagia
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.postmenopausal_bleeding" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="8274^POSTMENOPAUSAL BLEEDING^99DCT">
+                    Postmenopausal bleeding
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.postcoital_bleeding" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="8273^POSTCOITAL BLEEDING^99DCT">
+                    Postcoital bleeding
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="chief_complaint.none" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="1107^NONE^99DCT">
+                    None
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input class="has-freetext" id="chief_complaint.other_non_coded" type="checkbox"
+                           data-concept="5219^CHIEF COMPLAINT^99DCT" value="5622^OTHER NON-CODED^99DCT">
+                    Other
+                </label>
+            </div>
+            <div class="form-group freetext">
+                <label for="chief_complaint.freetext_general">Specify:<span class="required">*</span></label>
+                <textarea class="form-control" name="chief_complaint.freetext_general"
+                          id="chief_complaint.freetext_general"
+                          data-concept="1915^FREETEXT GENERAL^99DCT"></textarea>
+            </div>
+        </fieldset>
+    </div>
+    <div class="section">
+        <h4>Current family planning method</h4>
+        <fieldset name="374^METHOD OF FAMILY PLANNING^99DCT">
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.condoms" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="190^CONDOMS^99DCT">
+                    Condoms
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.female_sterilization" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="5276^FEMALE STERILIZATION^99DCT">
+                    Sterilization / Hysterectomy
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.intrauterine_device" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="5275^INTRAUTERINE DEVICE^99DCT">
+                    Intrauterine device
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.diaphragm" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="5278^DIAPHRAGM^99DCT">
+                    Diaphragm / Cervical cap
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.family_planning_via_oral_contraceptive_pills" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="780^ORAL CONTRACEPTION^99DCT">
+                    Oral contraceptive pills
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.natural_family_planning" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="5277^NATURAL FAMILY PLANNING^99DCT">
+                    Natural family planning
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.injectable_contraceptives" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="5279^INJECTABLE CONTRACEPTIVES^99DCT">
+                    Injectable hormonesa
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.contraceptive_implant" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="6220^CONTRACEPTIVE IMPLANT^99DCT">
+                    Implant / Patching
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.none" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="1107^NONE^99DCT">
+                    None
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="method_of_family_planning.do_not_know" type="checkbox"
+                           data-concept="374^METHOD OF FAMILY PLANNING^99DCT" value="1624^DO NOT KNOW^99DCT">
+                    Do not know
+                </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="section">
+        <h4>Prior PAP results</h4>
+        <fieldset name="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT">
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="papanicolaou_result.normal" type="checkbox"
+                           data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"
+                           value="1115^NORMAL^99DCT">
+                    Normal
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="papanicolaou_result.atypical_squamous_cells_of_undetermined_significance" type="checkbox"
+                           data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"
+                           value="7417^ATYPICAL SQUAMOUS CELLS OF UNDETERMINED SIGNIFICANCE ^99DCT">
+                    Atypical squamous cells of undetermined significance
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="papanicolaou_result.atypical_glandular_cells_of_undetermined_significance" type="checkbox"
+                           data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"
+                           value="7418^ATYPICAL GLANDULAR CELLS OF UNDETERMINED SIGNIFICANCE ^99DCT">
+                    Atypical glandular cells of undetermined significance
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="papanicolaou_result.low_grade_squamous_intraepithelial_lesion" type="checkbox"
+                           data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"
+                           value="7419^LOW GRADE SQUAMOUS INTRAEPITHELIAL LESION^99DCT">
+                    Low grade squamous intraepithelial lesion
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="papanicolaou_result.high_grade_squamous_intraepithelial_lesion" type="checkbox"
+                           data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"
+                           value="7420^HIGH GRADE SQUAMOUS INTRAEPITHELIAL LESION^99DCT">
+                    High grade squamous intraepithelial lesion
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="papanicolaou_result.squamous_cell_carcinoma_not_otherwise_specified" type="checkbox"
+                           data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"
+                           value="7421^SQUAMOUS CELL CARCINOMA, NOT OTHERWISE SPECIFIED ^99DCT">
+                    Squamous cell carcinoma
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="papanicolaou_result.adenocarcinoma" type="checkbox"
+                           data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"
+                           value="7422^ADENOCARCINOMA ^99DCT">
+                    Adenocarcinoma
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="papanicolaou_result.do_not_know" type="checkbox"
+                           data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"
+                           value="1624^DO NOT KNOW^99DCT">
+                    Do not know
+                </label>
+            </div>
+
+         <div class="form-group" id="date_most_recent_papanicolaou_smear_performed_div" >
+            <label for="date_most_recent_papanicolaou_smear_performed">Date of most recent PAP result</label>
+            <input class="form-control datepicker nonFutureDate past-date" id="date_most_recent_papanicolaou_smear_performed"
+                   name="date_most_recent_papanicolaou_smear_performed" type="text" readonly="readonly"
+                   data-concept="6727^DATE MOST RECENT PAPANICOLAOU SMEAR PERFORMED^99DCT">
+        </div>
+        </fieldset>
+    </div>
+</div>
+<div class="section">
+    <div class="form-group">
+        <label for="encounter.provider_id_select">Provider Name:</label>
+        <input class="form-control valid-provider-only" id="encounter.provider_id_select" type="text"
+               placeholder="Start typing provider name here ...">
+        <input class="form-control" name="encounter.provider_id_select" type="hidden">
+    </div>
+
+
+    <div class="form-group hidden">
+        <select id="select_providers">
+            <option data-provider = "Daurine Achieng Agumba" value = "3419-9">Daurine Achieng Agumba</option>
+            <option data-provider = "Irene Chepkosgei	Kurgat" value = "3420-7">Irene Chepkosgei	Kurgat</option>
+            <option data-provider = "Rose	Cheruto	Toroitich" value = "3421-5">Rose	Cheruto	Toroitich</option>
+            <option data-provider = "Mary	Kipkurui Kimosop" value = "3422-3">Mary	Kipkurui Kimosop</option>
+            <option data-provider = "Jacqueline Chemom Ndiema" value = "3423-1">Jacqueline Chemom Ndiema</option>
+            <option data-provider = "Grace Wanjiru Mwangi" value = "3424-9">Grace Wanjiru Mwangi</option>
+            <option data-provider = "Collette	Mabia Palapala" value = "3425-6">Collette	Mabia Palapala</option>
+            <option data-provider = "Dorice Erima	Wekesa	Female" value = "3426-4">Dorice Erima	Wekesa	Female</option>
+            <option data-provider = "Agnes Kagure	Boen" value = "120-6">Agnes Kagure	Boen</option>
+            <option data-provider = "Linet Kerubo	Onyancha" value = "3427-2">Linet Kerubo	Onyancha</option>
+            <option data-provider = "Delinah Muchai Tanui" value = "1208-8">Delinah Muchai Tanui</option>
+            <option data-provider = "Hellen Mushimbi Indumbwe" value = "3321-7">Hellen Mushimbi Indumbwe</option>
+            <option data-provider = "Lydia Cherugut Samoei" value = "1525-5">Lydia Cherugut Samoei</option>
+            <option data-provider = "Ruth	Kalunda	Nzili" value = "1529-7">Ruth	Kalunda	Nzili</option>
+            <option data-provider = "Lucy	Cheruto	Birgen" value = "3428-0">Lucy	Cheruto	Birgen</option>
+            <option data-provider = "Gratiah Nafuna Khaemba" value = "1409-2">Gratiah Nafuna Khaemba</option>
+            <option data-provider = "Leonida Chemutai	Mengich" value = "1357-3">Leonida Chemutai	Mengich</option>
+            <option data-provider = "Ann Wangoi Maina" value = "1412-6">Ann Wangoi Maina</option>
+            <option data-provider = "Elkanah Omenge Orango" value = "1474-6">Elkanah Omenge Orango</option>
+            <option data-provider = "Peter Mukhanadale Istura" value = "1478-7">Peter Mukhanadale Istura</option>
+            <option data-provider = "Hillary Mabeya" value = "1476-1">Hillary Mabeya</option>
+            <option data-provider = "Astrid Christoffersen Deb" value = "1237-7">Astrid Christoffersen Deb</option>
+            <option data-provider = "Philip Kipkirui Tonui" value = "1485-7">Philip Kipkirui Tonui</option>
+            <option data-provider = "Ann Jebet Ngelel" value = "3613-7">Ann Jebet Ngelel</option>
+            <option data-provider = "Job Wekesa Wamukaya" value = "3614-5">Job Wekesa Wamukaya</option>
+            <option data-provider = "Joyce Chepkorir Chessum" value = "3615-2">Joyce Chepkorir Chessum</option>
+            <option data-provider = "Monica Chelimo Rotich" value = "3616-0">Monica Chelimo Rotich</option>
+            <option data-provider = "Penina Jerotich Biwott" value = "3617-8">Penina Jerotich Biwott</option>
+            <option data-provider = "Peter Gachingi Kamau" value = "3618-6">Peter Gachingi Kamau</option>
+            <option data-provider = "Phanice Jepkemoi Tomu" value = "3619-4">Phanice Jepkemoi Tomu</option>
+            <option data-provider = "Phyllis Jelagat Bartilol" value = "3620-2">Phyllis Jelagat Bartilol</option>
+            <option data-provider = "Roselyne Yatich" value = "3621-0">Roselyne Yatich</option>
+            <option data-provider = "Ruth Sego" value = "3622-8">Ruth Sego</option>
+            <option data-provider = "Yosabia Osebe Monari" value = "3623-6">Yosabia Osebe Monari</option>
+            <option data-provider = "Philip Kipkirui Tonui" value = "1485-7">Philip Kipkirui Tonui</option>
+        </select>
+    </div>
+
+    <div class="form-group show_provider_id_text">
+        <label for="encounter.provider_id">Provider's system-id:<span class="required">*</span></label>
+        <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id" type="text"
+               required="required" disabled="disabled">
+    </div>
+
+     <div class="form-group">
+        <label for="freetext_general">Comments</label>
+        <input class="form-control" id="freetext_general" name="freetext_general" type="text"
+               data-concept="1915^FREETEXT GENERAL^99DCT">
+    </div>
+</div>
+</form>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var dateFormat = "dd-mm-yy";
+        var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+        var encounterDatetime = $('#encounter\\.encounter_datetime');
+        if ($(encounterDatetime).val() == "") {
+            $(encounterDatetime).val(currentDate);
+        }
+
+        $('#save_draft').click(function () {
+            $(this).prop('disabled', true);
+            document.saveDraft(this);
+            $(this).prop('disabled', false);
+        });
+
+        $('#submit_form').click(function () {
+            $(this).prop('disabled', true);
+            document.submit();
+            $(this).prop('disabled', false);
+        });
+
+        var locationName = [
+            {"val": "7", "label": "Chulaimbo"},
+            {"val": "3", "label": "Turbo"},
+            {"val": "17", "label": "Iten"},
+            {"val": "2", "label": "Mosoriot"},
+            {"val": "8", "label": "Webuye"},
+            {"val": "84", "label": "Ampath MTRH"},
+            {"val": "11", "label": "Kitale"},
+            {"val": "19", "label": "Busia"}
+
+        ];
+
+        document.setupAutoCompleteData('encounter\\.location_id');
+
+
+        document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
+
+        $('#encounter\\.provider_id_select').change(function () {
+            if ($('#encounter\\.provider_id_select').val() === '') {
+                $('#encounter\\.provider_id').val('');
+                $('.show_provider_id_text').show();
+            }
+        });
+
+        var $patientSex = $('#patient\\.sex');
+        $patientSex.change(function () {
+            var $womenOnly = $('.relevant-female');
+            if ($patientSex.val() != 'F') {
+                $womenOnly.hide();
+                $('body').html("<div class='section text-center'><h4>This form is only applicable to female patient. " +
+                        "Please press back to close the form.</h4></div>");
+            } else {
+                $womenOnly.show();
+            }
+        });
+        $patientSex.trigger('change');
+
+
+        $('#papsmear_form').validate({});
+
+        $.fn.customValidationCheck = function () {
+            return true;
+        };
+
+    document.disableDate = function(testResult,testResultDate){
+        $('#' + testResult).change(function() {
+        if($(this).is(":checked")) {
+            $("#" + testResultDate).hide();
+        } else{
+             $("#" + testResultDate).show();
+        }
+    });
+    }
+
+    document.disableDate('papanicolaou_result\\.do_not_know','date_most_recent_papanicolaou_smear_performed_div');
+
+        var noneAndDontKnowValues = ["1107^NONE^99DCT", "1624^DO NOT KNOW^99DCT"];
+        var noneAndDontKnowMessage = "If None or Don't Know is selected, it should be the only option.";
+        $(':checkbox[data-concept="374^METHOD OF FAMILY PLANNING^99DCT"]').change(function () {
+            toggleValidationMessages(validateAlone($(this), noneAndDontKnowValues, noneAndDontKnowMessage));
+        });
+
+
+        var noneValues = ["1107^NONE^99DCT"];
+        var noneMessage = "If None is selected, it should be the only option.";
+        $(':checkbox[data-concept="5219^CHIEF COMPLAINT^99DCT"]').change(function () {
+            toggleValidationMessages(validateAlone($(this), noneValues, noneMessage));
+        });
+
+        var papanicolaouValues = ['1115^NORMAL^99DCT', '1624^DO NOT KNOW^99DCT'];
+        var papanicolaouMessage = "If Normal or Don't Know is selected, it should be the only option.";
+        $(':checkbox[data-concept="7423^MOST RECENT PAPANICOLAOU SMEAR RESULT^99DCT"]').change(function () {
+            toggleValidationMessages(validateAlone($(this), papanicolaouValues, papanicolaouMessage));
+        });
+        /* End - Example of calling above validation */
+
+
+        document.setupValidationForLocation("$('#encounter\\.location_id').val()","encounter\\.location_id");
+        document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()","encounter\\.provider_id");
+    });
+</script>
+
+</html>
