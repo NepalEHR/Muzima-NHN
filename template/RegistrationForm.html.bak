@@ -106,39 +106,31 @@
 
     <div class="section">
         <h3>Attributes</h3>
-        <div class="form-group group-set" data-group="patient.personattribute">
+        <div class="form-group group-set" data-group="patient.personattribute^1">
             <label for="patient.caste">Caste: </label>
             <select class="form-control" id="patient.caste" name="attribute_value">
 
-                <option value="1 - Dalit">1-Dalit</option>
-                <option value="2 - Janajati">2-Janjati</option>
-                <option value="3 - Madhesi">3-Madhesi</option>
-                <option value="4 - Muslim">4-Muslim</option>
-                <option value="5 - Brahman/Chhetri">5-Brahmnin/Chettri</option>
-                <option value="6 - Others">6-Others</option>
+                <option value="Dalit">1-Dalit</option>
+                <option value="Janjati">2-Janjati</option>
+                <option value="Madhesi">3-Madhesi</option>
+                <option value="Muslim">4-Muslim</option>
+                <option value="Brahmni-Chettri">5-Brahmnin/Chettri</option>
+                <option value="Others">6-Others</option>
                 </select>
             <input type="hidden" id="attribute_type_name" name="attribute_type_name" value="Caste">
-            <input type="hidden" id="attribute_type_uuid" name="attribute_type_uuid" value="c1f4a004-3f10-11e4-adec-0800271c1b75">
+            <input type="hidden" id="attribute_type_uuid" name="attribute_type_uuid" value="bfb861e8-d0dd-4e76-8545-e7f76b172746">
         </div>
-
-
-        <div class="form-group">
-            <label for="patient.phone_number">Sex: <span class="required">*</span></label>
-            <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
-            required="required" onchange="addChanges()">
-        </div>
-
-        
-        <!-- <div class="form-group group-set">
+        <div class="form-group group-set" data-group="patient.personattribute^1">
             <label for="patient.phone_number">Phone Number: </label>
             <input class="form-control phoneNumber" id="patient.phone_number" name="attribute_value" type="tel" onchange="addChanges()">
-            <input type="hidden" data-metadata-for="attribute_value" name="attribute_type_name" value="Contact Number">
-            <input type="hidden" data-metadata-for="attribute_value" name="attribute_type_uuid" value="c1f825c9-3f10-11e4-adec-0800271c1b75">
-      
-        </div> -->
-        <div class="form-group group-set">
+            <input type="hidden" id="attribute_type_name" name="attribute_type_name" value="Contact Phone Number">
+            <input type="hidden" id="attribute_type_uuid" name="attribute_type_uuid" value="8037ba06-fc79-4244-9d14-687baa44bd81">
+        </div>
+        <div class="form-group group-set" data-group="patient.personattribute^2">
             <label for="patient.mothers_name">Mother's Name: </label>
             <input class="form-control" id="patient.mothers_name" name="attribute_value" type="text">
+            <input type="hidden" id="attribute_type_name" name="attribute_type_name" value="Mother's Name">
+            <input type="hidden" id="attribute_type_uuid" name="attribute_type_uuid" value="8d871d18-c2cc-11de-8d13-0010c6dffd0f">
         </div>
       </div> 
       <div class="section">
@@ -354,7 +346,7 @@ function addChanges()
 
     var unix = Math.round(+new Date()/1000);
     var domel= document.getElementsByClassName('form-control phoneNumber')
-    var data = domel[0].value.replaceAll("-","") ;
+    var data = domel[0].value.replaceAll("-","")+unix;
     var new_val = data + "-" + luhnCheckDigit(data)
     
    document.getElementsByClassName('barcode_text form-control checkDigit')[0].value = new_val
