@@ -105,39 +105,40 @@
     </div> -->
 
     <div class="section">
-        <h3>Attributes</h3>
-        <div class="form-group group-set" data-group="patient.personattribute">
-            <label for="patient.caste">Caste: </label>
-            <select class="form-control" id="patient.caste" name="attribute_value">
+        <h3>Attributes</h3> 
+        <div class="form-group">
+            <label for="patient.comcaste">COM Caste: </label>
+            <select class="form-control" id="patient.comcaste"  name="patient.comcaste">
 
-                <option value="1 - Dalit">1-Dalit</option>
-                <option value="2 - Janajati">2-Janjati</option>
-                <option value="3 - Madhesi">3-Madhesi</option>
-                <option value="4 - Muslim">4-Muslim</option>
-                <option value="5 - Brahman/Chhetri">5-Brahmnin/Chettri</option>
-                <option value="6 - Others">6-Others</option>
+                <option value="3624">1-Dalit</option>
+                <option value="3625">2-Janjati</option>
+                <option value="3626">3-Madhesi</option>
+                <option value="3627">4-Muslim</option>
+                <option value="3628">5-Brahmnin/Chettri</option>
+                <option value="3629">6-Others</option>
                 </select>
-            <input type="hidden" id="attribute_type_name" name="attribute_type_name" value="Caste">
-            <input type="hidden" id="attribute_type_uuid" name="attribute_type_uuid" value="c1f4a004-3f10-11e4-adec-0800271c1b75">
-        </div>
+               </div>
 
+               <!-- <div class="form-group">
+                <label for="patient.caste">Caste: </label>
+                <select class="form-control" id="patient.caste"  name="patient.caste">
+    
+                    <option value="string:181456bd-ce49-4fb3-b868-15314908555d">1-Dalit</option>
+                    <option value="string:5cd5949d-59a7-4aaa-bba0-9bbc31fbbc1b">2-Janjati</option>
+                    <option value="string:7f9f4403-c93e-434c-bef4-77f9b7a28f9f">3-Madhesi</option>
+                    <option value="string:f006a4f0-4a9c-411f-9f7f-361145ff4129">4-Muslim</option>
+                    <option value="string:ca6becca-768f-4033-87fd-dacf1b9bc312">5-Brahmnin/Chettri</option>
+                    <option value="string:ae1991be-b777-4368-86fd-916553797d8e">6-Others</option>
+                    </select>
+                   </div> -->
 
         <div class="form-group">
             <label for="patient.phone_number">Phone: <span class="required">*</span></label>
             <input class="form-control phoneNumber" id="patient.phone_number" name="patient.phone_number"  type="tel" required="required" onchange="addChanges()">
-        </div>
-
-        
-        <!-- <div class="form-group group-set">
-            <label for="patient.phone_number">Phone Number: </label>
-            <input class="form-control phoneNumber" id="patient.phone_number" name="attribute_value" type="tel" onchange="addChanges()">
-            <input type="hidden" data-metadata-for="attribute_value" name="attribute_type_name" value="Contact Number">
-            <input type="hidden" data-metadata-for="attribute_value" name="attribute_type_uuid" value="c1f825c9-3f10-11e4-adec-0800271c1b75">
-      
-        </div> -->
-        <div class="form-group group-set">
+        </div> 
+        <div class="form-group ">
             <label for="patient.mothers_name">Mother's Name: </label>
-            <input class="form-control" id="patient.mothers_name" name="attribute_value" type="text">
+            <input class="form-control" id="patient.mothers_name" name="patient.mothers_name" type="text">
         </div>
       </div> 
       <div class="section">
