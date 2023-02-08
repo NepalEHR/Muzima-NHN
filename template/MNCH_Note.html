@@ -1,0 +1,192 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+    <title>मातृ तथा  शिशु सम्बन्धि  विवरण</title>
+    <style>
+    </style>
+</head>
+<body class="col-md-10 col-md-offset-1">
+<div id="pre_populate_data">
+</div>
+<form id="mnch_form" name="mnch_form">
+
+<h2 class="text-center">मातृ तथा  शिशु सम्बन्धि  विवरण</h2>
+
+<div class="section">
+    <h3>Demographics</h3>
+    <div class="form-group">
+        <input class="form-control" id="patient.uuid"
+               name="patient.uuid" type="hidden" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.medical_record_number">AMRS ID Number:</label>
+        <input class="form-control" id="patient.medical_record_number"
+               name="patient.medical_record_number" type="text" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.family_name">Family Name:</label>
+        <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.given_name">Given Name:</label>
+        <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.middle_name">Middle Name:</label>
+        <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.sex">Gender:</label>
+        <select class="form-control" id="patient.sex" name="patient.sex" disabled="disabled">
+            <option value="">...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="patient.birth_date">Date Of Birth:</label>
+        <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
+               readonly="readonly" value="">
+    </div>
+</div>
+
+<div class="section">
+    <h3>Encounter Details</h3> 
+    <div class="form-group">
+        <label for="encounter.location_id">Encounter Location:<span class="required">*</span></label>
+        <input class="form-control valid-location-only" id="encounter.location_id" type="text" placeholder="Start typing something..." required="required">
+        <input class="form-control" name="encounter.location_id" type="hidden">
+    </div>
+
+    <div class="form-group hidden">
+        <label for="encounter.location_id_select">Encounter Location <span class="required">*</span></label>
+        <select class="form-control" id="encounter.location_id_select" required="required">
+            <option>...</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="encounter.provider_id_select">Provider Name:<span class="required">*</span></label>
+        <input class="form-control" id="encounter.provider_id_select" type="text" placeholder="Start typing something...">
+        <input class="form-control" name="encounter.provider_id_select" type="hidden">
+    </div>
+
+    <div class="form-group show_provider_id_text">
+        <label for="encounter.provider_id">Provider system-id:<span class="required">*</span></label>
+        <input class="form-control checkDigit" id="encounter.provider_id" disabled name="encounter.provider_id"
+               type="text" required="required"  placeholder="Provider Id">
+    </div>
+    <div class="form-group">
+        <label for="encounter.encounter_datetime">Encounter Date:<span class="required">*</span></label>
+        <input class="form-control datepicker nonFutureDate" id="encounter.encounter_datetime"
+               name="encounter.encounter_datetime" type="text" readonly="readonly"
+               required="required">
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
+               type="hidden" required="required">
+    </div>
+</div>
+
+
+<div class="section">
+    <div class="form-group">
+        </p><label for="obs.ANC-Last_menstrual_period">अम्तिम रजस्वला भएकाे (ग.म.सा.): </label>
+        <input class="form-control datepicker nonFutureDate" id="obs.ANC-Last_menstrual_period" name="obs.ANC-Last_menstrual_period"
+               type="text" placeholder="अम्तिम रजस्वला भएकाे (ग.म.सा.):" data-concept="5969^ANC-Last_menstrual_period^99DCT" required="required">
+    </div>
+    <div>
+        <label for="obs.ANC-Expected_delivery_date">प्रसुतिकाे अनुमानित मिति (ग.म.सा.):</label>
+        <input class="form-control datepicker" data-concept="5970^ANC-Expected_delivery_date^99DCT"
+               id="obs.ANC-Expected_delivery_date" name="obs.ANC-Expected_delivery_date" type="text"
+               >
+    </div>
+    <div class="form-group">
+        <label for="obs.Counseling_Done">जिवन सुरक्षाा परामर्स  दिएकाे:<span class="required">*</span></label>
+            <select class="form-control" id="obs.Counseling_Done" name="obs.Counseling_Done" required="required"
+                data-concept="9655^Counseling_Done^99DCT">
+                <option value="2146^Yes^99DCT">दिएकाे छ</option>
+                <option value="2147^No^99DCT">दिएकाे छैन</option>
+            </select>
+        </div>
+    <div class="form-group">
+    <label for="obs.ANC-ANC_visit">स्वास्थ्य संस्थामा गर्भ जांच गरेकाे पटक<span class="required">*</span></label>
+        <select class="form-control" id="obs.ANC-ANC_visit" name="obs.ANC-ANC_visit" required="required"
+            data-concept="5963^ANC-ANC_visit^99DCT">
+            <option value="5959^ANC-1st_per_protocol^99DCT">१२ हप्ता सम्म</option>
+            <option value="5960^ANC-2nd_per_protocol^99DCT">१६ हप्ता सम्म</option>
+            <option value="5961^ANC-3rd_per_protocol^99DCT">२०-२४ हप्ता</option>
+            <option value="5962^ANC-4th_per_protocol^99DCT">२८ हप्ता</option>
+            <option value="9323^ANC-5th_per_protocol^99DCT">३२ हप्ता</option>
+            <option value="9324^ANC-6th_per_protocol^99DCT">३४ हप्ता</option>
+            <option value="9325^ANC-7th_per_protocol^99DCT">३६ हप्ता</option>
+            <option value="9326^ANC-8th_per_protocol^99DCT">३८-४० हप्ता</option>
+            <option value="8885^ANC-Other_visit^99DCT">अन्य</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="obs.remarks">कैफियत<span class="required">*</span></label>
+        <input class="form-control" id="obs.remarks" name="obs.remarks" required="required"
+            data-concept="9629^community, remarks?^99DCT"  type="text"> 
+    </div>
+     <!-- <div class="form-group">
+    <label for="obs.blood_group">5. What’s your blood group?<span class="required">*</span></label>
+        <select class="form-control" id="obs.blood_group" name="obs.blood_group" required="required"
+            data-concept="300^BLOOD TYPING^99DCT">
+            <option value="">...</option>
+            <option value="690^A^99DCT">A</option>
+            <option value="694^B^99DCT">B</option>
+            <option value="1230^AB^99DCT">AB</option>
+            <option value="699^O^99DCT">O</option>
+        </select>
+    </div> -->
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+    $('#mnch_form').validate({
+        rules: {
+            'obs.number_of_victims': {
+                number: true,
+                range: [1, 100]
+            }
+        }
+    });
+
+    $('#save_draft').click(function () {
+        $(this).prop('disabled', true);
+        document.saveDraft(this);
+        $(this).prop('disabled', false);
+    });
+
+    $('#submit_form').click(function () {
+        $(this).prop('disabled', true);
+        document.submit();
+        $(this).prop('disabled', false);
+    });
+
+    document.setupAutoCompleteData('encounter\\.location_id');
+
+
+document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
+
+    
+    document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()","encounter\\.provider_id");
+
+document.setupValidationForLocation("$('#encounter\\.location_id').val()","encounter\\.location_id");
+});
+</script>
+</html>
