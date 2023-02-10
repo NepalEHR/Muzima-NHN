@@ -111,7 +111,6 @@
                 <option value="1864^High Risk^99DCT">अति जोखिम</option>
             </select>
         </div>
-    <div class="section">
         <div class="form-group">
             <label for="obs.MUAC">MUAC:<span class="required">*</span></label>
                 <select class="form-control" id="obs.MUAC" name="obs.MUAC" required="required"
@@ -121,37 +120,34 @@
                     <option value="6609^Yellow^99DCT">Yellow</option>
                     <option value="6611^Red^99DCT">Red</option>
                 </select>
-            </div>
-            <div class="section">
-                <div class="form-group">
-                    <label for="obs.Nutrition-Only_breast_feeding_for_6_months">जन्मेको ६ महिना सम्म स्थानपान मात्र:<span class="required">*</span></label>
-                        <select class="form-control" id="obs.Nutrition-Only_breast_feeding_for_6_months" name="obs.Nutrition-Only_breast_feeding_for_6_months" required="required"
-                            data-concept="5941^Nutrition-Only_breast_feeding_for_6_months^99DCT" type="boolean">
+        </div>
+        <div class="form-group">
+            <label for="obs.Nutrition-Only_breast_feeding_for_6_months">जन्मेको ६ महिना सम्म स्थानपान मात्र:<span class="required">*</span></label>
+                <select class="form-control" id="obs.Nutrition-Only_breast_feeding_for_6_months" name="obs.Nutrition-Only_breast_feeding_for_6_months" required="required"
+                        data-concept="5941^Nutrition-Only_breast_feeding_for_6_months^99DCT" type="boolean">
+                        <option value="">Select one</option>
+                        <option value="True">गराएको</option>
+                        <option value="False">नगराएको</option>
+                </select>
+    </div>
+        <div class="form-group">
+                <label for="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months">६ महिनापछि स्थनपान साथै थप खाना शुरु:<span class="required">*</span></label>
+                    <select class="form-control" id="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months" name="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months" required="required"
+                            data-concept="2111^Nutrition-Breast_Feeding_and_Light_Food_after_6_months^99DCT">
                             <option value="">Select one</option>
                             <option value="True">गराएको</option>
                             <option value="False">नगराएको</option>
+                    </select>
+        </div>
+        <div class="form-group">
+                    <label for="obs.counselling_and_refer">सल्लाह /परामर्श/ रेफर:<span class="required">*</span></label>
+                        <select class="form-control" id="obs.counselling_and_refer" name="obs.counselling_and_refer" required="required"
+                            data-concept="9713^counselling_and_refer^99DCT">
+                            <option value="">Select one</option>
+                            <option value="9712^counsel^99DCT">सल्लाह /परामर्श</option>
+                            <option value="2922^Referred^99DCT">रेफर</option>
                         </select>
-                    </div>
-            <div class="section">
-                <div class="form-group">
-                        <label for="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months">६ महिनापछि स्थनपान साथै थप खाना शुरु:<span class="required">*</span></label>
-                            <select class="form-control" id="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months" name="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months" required="required"
-                                data-concept="2111^Nutrition-Breast_Feeding_and_Light_Food_after_6_months^99DCT">
-                                <option value="">Select one</option>
-                                <option value="True">गराएको</option>
-                                <option value="False">नगराएको</option>
-                            </select>
-                        </div>
-            <div class="section">
-                    <div class="form-group">
-                            <label for="obs.counselling_and_refer">सल्लाह /परामर्श/ रेफर:<span class="required">*</span></label>
-                                <select class="form-control" id="obs.counselling_and_refer" name="obs.counselling_and_refer" required="required"
-                                    data-concept="9713^counselling_and_refer^99DCT">
-                                        <option value="">Select one</option>
-                                        <option value="9712^counsel^99DCT">सल्लाह /परामर्श</option>
-                                        <option value="2922^Referred^99DCT">रेफर</option>
-                                </select>
-                    </div>     
+        </div>     
                  
     <div class="form-group">
     <label for="obs.remarks">कैफियत<span class="required">*</span></label>
