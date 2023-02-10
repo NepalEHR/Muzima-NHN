@@ -10,16 +10,16 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/additional-methods.min.js"></script>
     <script src="js/muzima.js"></script>
-    <title>मातृ मृत्यु विवरण</title>
+    <title>२ वर्ष मुनिका बालबालिकाको वृद्धि अनुगमन सेवा</title>
     <style>
     </style>
 </head>
 <body class="col-md-10 col-md-offset-1">
 <div id="pre_populate_data">
 </div>
-<form id="Maternal_Death_Form" name="Maternal_Death_Form">
+<form id="Below_2_years_child_growth_monitoring_note" name="Below_2_years_child_growth_monitoring_note">
 
-<h2 class="text-center">मातृ मृत्यु विवरण</h2>
+<h2 class="text-center">२ वर्ष मुनिका बालबालिकाको वृद्धि अनुगमन सेवा</h2>
 
 <div class="section">
     <h3>Demographics</h3>
@@ -102,40 +102,57 @@
 
 <div class="section">
     <div class="form-group">
-        <label for="obs.Comm_Death_Place">मृत्यु हुँदाको अवस्था:<span class="required">*</span></label>
-            <select class="form-control" id="obs.Comm_Death_Place" name="obs.Comm_Death_Place" required="required"
-                data-concept="5820^Comm_Death_Place^99DCT">
-                <option value="1901^Antepartum^99DCT">गर्भवती</option>
-                <option value="1902^Intrapartum^99DCT">प्रशव</option>
-                <option value="1903^Postpartum^99DCT">सुत्केरी</option>
+        <label for="obs.Weight_(as per age)">तौल (उमेर अनुसारको वृद्धि):<span class="required">*</span></label>
+            <select class="form-control" id="obs.Weight_(as per age)" name="obs.Weight_(as per age)" required="required"
+                data-concept="9710^Weight_(as per age)^99DCT">
+                <option value="">Select one</option>
+                <option value="324^Normal^99DCT">सामान्य</option>
+                <option value="2105^Risk^99DCT">जोखिम</option>
+                <option value="1864^High Risk^99DCT">अति जोखिम</option>
             </select>
         </div>
-    
-    <div>
-        <label for="obs.Date">मृत्यु भएको मिति:</label>
-        <input class="form-control datepicker" data-concept="996^Date^99DCT"
-               id="obs.Date" name="obs.Date" type="text"
-               >
-    </div>
-    <div class="form-group">
-        <label for="obs.Comm_Delivery_Place">प्रसुति भएको स्थान:<span class="required">*</span></label>
-            <select class="form-control" id="obs.Comm_Delivery_Place" name="obs.Comm_Delivery_Place" required="required"
-                data-concept="9663^Comm_Delivery_Place^99DCT">
-                <option value="9661^Comm, Home^99DCT">घर</option>
-                <option value="9452^RHS - Hospital^99DCT">संस्था</option>
-                <option value="9431^RHS - Others^99DCT">अन्य</option>
-            </select>
-        </div>
+    <div class="section">
         <div class="form-group">
-            <label for="obs.Comm_Death_Place">मृत्यु भएको स्थान:<span class="required">*</span></label>
-                <select class="form-control" id="obs.Comm_Death_Place" name="obs.Comm_Death_Place" required="required"
-                    data-concept="9665^Comm_Death_Place^99DCT">
-                    <option value="9661^Comm, Home^99DCT">घर</option>
-                    <option value="9452^RHS - Hospital^99DCT">संस्था</option>
-                    <option value="9431^RHS - Others^99DCT">अन्य</option>
+            <label for="obs.MUAC">MUAC:<span class="required">*</span></label>
+                <select class="form-control" id="obs.MUAC" name="obs.MUAC" required="required"
+                    data-concept="9711^MUAC^99DCT">
+                    <option value="">Select one</option>
+                    <option value="6608^Green^99DCT">Green</option>
+                    <option value="6609^Yellow^99DCT">Yellow</option>
+                    <option value="6611^Red^99DCT">Red</option>
                 </select>
-            </div>    
-    
+            </div>
+            <div class="section">
+                <div class="form-group">
+                    <label for="obs.Nutrition-Only_breast_feeding_for_6_months">जन्मेको ६ महिना सम्म स्थानपान मात्र:<span class="required">*</span></label>
+                        <select class="form-control" id="obs.Nutrition-Only_breast_feeding_for_6_months" name="obs.Nutrition-Only_breast_feeding_for_6_months" required="required"
+                            data-concept="5941^Nutrition-Only_breast_feeding_for_6_months^99DCT" type="boolean">
+                            <option value="">Select one</option>
+                            <option value="True">गराएको</option>
+                            <option value="False">नगराएको</option>
+                        </select>
+                    </div>
+            <div class="section">
+                <div class="form-group">
+                        <label for="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months">६ महिनापछि स्थनपान साथै थप खाना शुरु:<span class="required">*</span></label>
+                            <select class="form-control" id="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months" name="obs.Nutrition-Breast_Feeding_and_Light_Food_after_6_months" required="required"
+                                data-concept="2111^Nutrition-Breast_Feeding_and_Light_Food_after_6_months^99DCT">
+                                <option value="">Select one</option>
+                                <option value="True">गराएको</option>
+                                <option value="False">नगराएको</option>
+                            </select>
+                        </div>
+            <div class="section">
+                    <div class="form-group">
+                            <label for="obs.counselling_and_refer">सल्लाह /परामर्श/ रेफर:<span class="required">*</span></label>
+                                <select class="form-control" id="obs.counselling_and_refer" name="obs.counselling_and_refer" required="required"
+                                    data-concept="9713^counselling_and_refer^99DCT">
+                                        <option value="">Select one</option>
+                                        <option value="9712^counsel^99DCT">सल्लाह /परामर्श</option>
+                                        <option value="2922^Referred^99DCT">रेफर</option>
+                                </select>
+                    </div>     
+                 
     <div class="form-group">
     <label for="obs.remarks">कैफियत<span class="required">*</span></label>
         <input class="form-control" id="obs.remarks" name="obs.remarks" required="required"
@@ -147,7 +164,7 @@
 <script type="text/javascript">
 
 $(document).ready(function () {
-    $('#Maternal_Death_Form').validate({
+    $('#Below_2_years_child_growth_monitoring_note').validate({
         rules: {
             'obs.number_of_victims': {
                 number: true,
